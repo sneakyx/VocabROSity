@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Vocabulary;
-use App\Form\VocabularyType;
+use App\Form\VocabularyEditType;
 use App\Repository\VocabularyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +26,7 @@ class VocabularyEditController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $vocabulary = new Vocabulary();
-        $form = $this->createForm(VocabularyType::class, $vocabulary);
+        $form = $this->createForm(VocabularyEditType::class, $vocabulary);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,7 +53,7 @@ class VocabularyEditController extends AbstractController
     #[Route('/{id}/edit', name: 'app_vocabulary_edit_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Vocabulary $vocabulary, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(VocabularyType::class, $vocabulary);
+        $form = $this->createForm(VocabularyEditType::class, $vocabulary);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
