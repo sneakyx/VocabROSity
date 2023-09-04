@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vocabulary{% endblock %}
+
+{% block body %}
+    <h1>Vocabulary</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vocabulary.id }}</td>
+            </tr>
+            <tr>
+                <th>NativePhrase</th>
+                <td>{{ vocabulary.nativePhrase }}</td>
+            </tr>
+            <tr>
+                <th>ForeignPhrase</th>
+                <td>{{ vocabulary.foreignPhrase }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vocabulary_edit_index') }}">back to list</a>
+
+    <a href="{{ path('app_vocabulary_edit_edit', {'id': vocabulary.id}) }}">edit</a>
+
+    {{ include('vocabulary_edit/_delete_form.html.twig') }}
+{% endblock %}
